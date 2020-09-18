@@ -73,7 +73,7 @@ if (app.get('env') == 'development') {
     let u = decodeURI(req.url).trim().toLowerCase();
     if (u.startsWith("javascript:"))
             console.log( "about:blank");
-    console.log( url);
+    console.log( u);
 
 
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
