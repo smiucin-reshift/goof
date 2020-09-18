@@ -33,6 +33,11 @@ router.post('/', async (req, res, next) => {
     user.address = req.body.address
     user.role = req.body.role
 
+    const u = decodeURI(req.url).trim().toLowerCase();
+    if (u.startsWith("javascript:"))
+        res.append("wow");
+    
+
     const savedRecord = await repo.save(user)
     console.log("Post has been saved: ", savedRecord)
     return res.sendStatus(200)
