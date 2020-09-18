@@ -70,6 +70,12 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
+    let u = decodeURI(url).trim().toLowerCase();
+    if (u.startsWith("javascript:"))
+        return "about:blank";
+    return url;
+
+
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
 console.log('token: ' + token);
 
