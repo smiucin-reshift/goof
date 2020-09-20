@@ -7,6 +7,9 @@ require('./mongoose-db');
 require('./typeorm-db')
 var express = require('express');
 var app = express();
+var cookieParser = require('cookie-parser')
+var passport = require('passport')
+
 
 var st = require('st');
 var crypto = require('crypto');
@@ -78,6 +81,11 @@ app.get('/:path', function(req, res) {
     res.sendFile(path);
 });
 
+app.use(cookieParser())
+app.use(passport.authorize({ session: true }))
+
+app.post('/changeEmail', ..., function (req, res) {
+});
 
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
 console.log('token: ' + token);
