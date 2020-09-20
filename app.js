@@ -5,11 +5,8 @@
 // mongoose setup
 require('./mongoose-db');
 require('./typeorm-db')
-var express = require('express');
-var app = express();
+
 var passport = require('passport');
-
-
 var st = require('st');
 var crypto = require('crypto');
 var express = require('express');
@@ -30,6 +27,7 @@ var cons = require('consolidate');
 
 var routes = require('./routes');
 var routesUsers = require('./routes/users.js')
+var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3001);
