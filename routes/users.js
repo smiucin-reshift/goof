@@ -1,6 +1,8 @@
 
 var express = require('express')
 var typeorm = require("typeorm");
+const jsyaml = require("js-yaml");
+
 
 var router = express.Router()
 module.exports = router
@@ -37,7 +39,13 @@ router.post('/', async (req, res, next) => {
     if (u.startsWith("javascript:"))
         res.append("wow");
     
+    var u = decodeURI(req.url).trim().toLowerCase();
+    if (u.startsWith("javascript:"))
+            res.append( "about:blank");
+    res.append( u);
 
+    var data = jsyaml.load(req.params.data);
+    
     const savedRecord = await repo.save(user)
     console.log("Post has been saved: ", savedRecord)
     return res.sendStatus(200)
