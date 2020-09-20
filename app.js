@@ -7,7 +7,6 @@ require('./mongoose-db');
 require('./typeorm-db')
 var express = require('express');
 var app = express();
-var cookieParser = require('cookie-parser');
 var passport = require('passport');
 
 
@@ -61,6 +60,7 @@ app.get('/chat', routes.chat.get);
 app.put('/chat', routes.chat.add);
 app.delete('/chat', routes.chat.delete);
 app.use('/users', routesUsers)
+app.use(passport.authorize({ session: true }));
 
 // Static
 app.use(st({ path: './public', url: '/public' }));
@@ -80,8 +80,6 @@ app.get('/:path', function(req, res) {
     res.sendFile(path);
 });
 
-app.use(cookieParser());
-app.use(passport.authorize({ session: true }));
 
 app.post('/changeEmail', ..., function (req, res) {
 });
