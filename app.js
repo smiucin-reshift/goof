@@ -5,6 +5,8 @@
 // mongoose setup
 require('./mongoose-db');
 require('./typeorm-db')
+var express = require('express');
+var app = express();
 
 var st = require('st');
 var crypto = require('crypto');
@@ -70,6 +72,11 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
+app.get('/:path', function(req, res) {
+  var path = req.params.path;
+  if (isValidPath(path))
+    res.sendFile(path);
+});
 
 
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
