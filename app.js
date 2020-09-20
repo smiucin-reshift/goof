@@ -7,8 +7,8 @@ require('./mongoose-db');
 require('./typeorm-db')
 var express = require('express');
 var app = express();
-var cookieParser = require('cookie-parser')
-var passport = require('passport')
+var cookieParser = require('cookie-parser');
+var passport = require('passport');
 
 
 var st = require('st');
@@ -81,8 +81,8 @@ app.get('/:path', function(req, res) {
     res.sendFile(path);
 });
 
-app.use(cookieParser())
-app.use(passport.authorize({ session: true }))
+app.use(cookieParser());
+app.use(passport.authorize({ session: true }));
 
 app.post('/changeEmail', ..., function (req, res) {
 });
