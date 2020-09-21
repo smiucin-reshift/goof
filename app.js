@@ -82,6 +82,13 @@ app.get('/:path', function(req, res) {
 });
 
 
+app.get("/some/path", function(req, res) {
+    let url = req.param("url");
+    // BAD: the host of `url` may be controlled by an attacker
+    if (url.match(/https?:\/\/www\.example\.com\//)) {
+        res.redirect(url);
+    }
+});
 
 
 var token = 'SECRET_TOKEN_f8ed84e8f41e4146403dd4a6bbcea5e418d23a9';
