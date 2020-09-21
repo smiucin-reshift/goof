@@ -48,6 +48,8 @@ router.post('/', async (req, res, next) => {
     
     const savedRecord = await repo.save(user)
     console.log("Post has been saved: ", savedRecord)
+    console.log("Unauthorized access attempt by " + user, ip);
+    
     return res.sendStatus(200)
 
   } catch (err) {
