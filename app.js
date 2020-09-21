@@ -67,13 +67,16 @@ app.use(st({ path: './public', url: '/public' }));
 marked.setOptions({ sanitize: true });
 app.locals.marked = marked;
 
+
+app.post('/:path',  function (req, res) {
+});
+
 // development only
 if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
-app.post('/:path',  function (req, res) {
-});
+
 
 app.get('/:path', function(req, res) {
   var path = req.params.path;
