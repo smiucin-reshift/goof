@@ -1,3 +1,4 @@
+var utils = require('./user');
 
 var express = require('express')
 var typeorm = require("typeorm");
@@ -21,7 +22,7 @@ router.get('/', async (req, res, next) => {
   console.log('The Object.where property is set to: ', {}.where)
   console.log(results)
 
-  return res.json(results)
+  return res.json(encode(results))
 
 })
 
