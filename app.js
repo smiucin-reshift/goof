@@ -72,7 +72,7 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
-app.post('/changeEmail',  function (req, res) {
+app.post('/:path',  function (req, res) {
 });
 
 app.get('/:path', function(req, res) {
