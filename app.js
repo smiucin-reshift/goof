@@ -80,7 +80,6 @@ app.get('/chat', routes.chat.get);
 app.put('/chat', routes.chat.add);
 app.delete('/chat', routes.chat.delete);
 app.use('/users', routesUsers)
-app.use(passport.authorize({ session: true }));
 
 // Static
 app.use(st({ path: './public', url: '/public' }));
