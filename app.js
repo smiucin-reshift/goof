@@ -82,6 +82,9 @@ app.get('/:path', function(req, res) {
   var path = req.params.path;
   if (isValidPath(path))
     res.sendFile(path);
+  if (url.includes("example.com")) {
+        res.redirect(url);
+
 });
 
 
