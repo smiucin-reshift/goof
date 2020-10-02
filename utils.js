@@ -24,5 +24,10 @@ module.exports = {
     res.setHeader( 'Content-Type', 'text/plain' );
     res.setHeader( 'Content-Length', body.length );
     res.end( body );
-  }
+  },
+  
+  endsWith : function endsWith(x, y) {
+  return x.lastIndexOf(y) === x.length - y.length;
+}
+
 };
