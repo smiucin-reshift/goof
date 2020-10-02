@@ -6,6 +6,13 @@
 require('./mongoose-db');
 require('./typeorm-db')
 const pg = require('pg')
+const crypto = require('crypto');
+
+const desCipher = crypto.createCipher('des', key);
+var desEncrypted = cipher.write(secretText, 'utf8', 'hex'); // BAD: weak encryption
+
+const aesCipher = crypto.createCipher('aes-128', key);
+var aesEncrypted = cipher.update(secretText, 'utf8', 'hex'); // GOOD: strong encryption
 
 const client = new pg.Client({
   user: 'dbuser',
