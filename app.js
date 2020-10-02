@@ -95,6 +95,10 @@ app.get('/:path', function(req, res) {
   if (url.includes("example.com")) {
         res.redirect(url);
   }
+  var pw = req.param("current_password");
+  // BAD: Setting a cookie value with cleartext sensitive data.
+  res.cookie("password", pw);
+
 
 });
 
