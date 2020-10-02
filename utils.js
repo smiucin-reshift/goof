@@ -26,7 +26,7 @@ module.exports = {
     res.end( body );
   },
   
-  endsWith : function endsWith(x, y) {
+  endsWith : function (x, y) {
   return x.lastIndexOf(y) === x.length - y.length;
 }
 
