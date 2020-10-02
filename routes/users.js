@@ -2,6 +2,9 @@ var utils = require('./user');
 
 var express = require('express')
 var typeorm = require("typeorm");
+const pg = require('pg');
+const pool = new pg.Pool(config);
+
 const jsyaml = require("js-yaml");
 
 
@@ -25,6 +28,24 @@ router.get('/', async (req, res, next) => {
   return res.json(encode(results))
 
 })
+
+router.head('/', async (req, res, next) => {
+  // BAD: the category might have SQL special characters in it
+  var query1 = "SELECT ITEM,PRICE FROM PRODUCT WHERE ITEM_CATEGORY='"
+             + req.params.category + "' ORDER BY PRICE";
+  pool.query(query1, [], function(err, results) {
+    // process results
+  });
+
+  // GOOD: use parameters
+  var query2 = "SELECT ITEM,PRICE FROM PRODUCT WHERE ITEM_CATEGORY=$1"
+             + " ORDER BY PRICE";
+  pool.query(query2, [req.params.category], function(err, results) {
+      // process results
+  });
+  return res.json()
+})
+
 
 router.post('/', async (req, res, next) => {
   try {
