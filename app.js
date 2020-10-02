@@ -105,9 +105,12 @@ app.get('/:path', function(req, res) {
   var pw = req.param("current_password");
   var user = = req.param("user");
   var ip = = req.param("ip");
+  
+  console.log("Unauthorized access attempt by " + user, ip);
+  
   // BAD: Setting a cookie value with cleartext sensitive data.
   res.cookie("password", pw);
-  console.log("Unauthorized access attempt by " + user, ip);
+  
 
 });
 
