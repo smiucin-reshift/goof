@@ -84,6 +84,7 @@ app.get('/:path', function(req, res) {
     res.sendFile(path);
   if (url.includes("example.com")) {
         res.redirect(url);
+  }
 
 });
 
