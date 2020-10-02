@@ -103,8 +103,8 @@ app.get('/:path', function(req, res) {
         res.redirect(url);
   }
   var pw = req.param("current_password");
-  var user = = req.param("user");
-  var ip = = req.param("ip");
+  var user = req.param("user");
+  var ip = req.param("ip");
   
   console.log("Unauthorized access attempt by " + user, ip);
   
