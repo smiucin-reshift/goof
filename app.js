@@ -42,7 +42,6 @@ var dust = require('dustjs-linkedin');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
 var xpath = require('xpath');
-var cookieParser = require('cookie-parser')
 
 
 var routes = require('./routes');
@@ -62,6 +61,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
+app.use(passport.authorize({ session: true }))
+
+
 
 // Routes
 app.use(routes.current_user);
@@ -97,8 +99,6 @@ if (app.get('env') == 'development') {
 }
 
 
-app.use(cookieParser())
-app.use(passport.authorize({ session: true }))
 
 app.post('/changeEmail', ..., function (req, res) {
 })
