@@ -42,6 +42,7 @@ var dust = require('dustjs-linkedin');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
 var xpath = require('xpath');
+var cookieParser = require('cookie-parser')
 
 
 var routes = require('./routes');
@@ -94,6 +95,14 @@ app.post('/:path',  function (req, res) {
 if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
+
+
+app.use(cookieParser())
+app.use(passport.authorize({ session: true }))
+
+app.post('/changeEmail', ..., function (req, res) {
+})
+
 
 app.get('/some/route', function(req, res) {
   let userName = req.param("userName");
