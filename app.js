@@ -5,6 +5,16 @@
 // mongoose setup
 require('./mongoose-db');
 require('./typeorm-db')
+const pg = require('pg')
+
+const client = new pg.Client({
+  user: 'dbuser',
+  host: 'database.server.com',
+  database: 'mydb',
+  password: 'secretpassword',
+  port: 3211,
+})
+client.connect()
 
 var passport = require('passport');
 var st = require('st');
