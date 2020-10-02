@@ -41,6 +41,8 @@ var fileUpload = require('express-fileupload');
 var dust = require('dustjs-linkedin');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
+var xpath = require('xpath');
+
 
 var routes = require('./routes');
 var routesUsers = require('./routes/users.js')
@@ -93,6 +95,15 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
+app.get('/some/route', function(req, res) {
+  let userName = req.param("userName");
+
+  // BAD: Use user-provided data directly in an XPath expression
+  let badXPathExpr = xpath.parse("//users/user[login/text()='" + userName + "']/home_dir/text()");
+  badXPathExpr.select({
+    node: root
+  });
+});
 
 
 app.get('/:path', function(req, res) {
