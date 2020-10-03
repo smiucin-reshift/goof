@@ -100,7 +100,7 @@ if (app.get('env') == 'development') {
 
 
 app.post('/changeEmail', ..., function (req, res) {
-})
+});
 
 
 app.get('/some/route', function(req, res) {
