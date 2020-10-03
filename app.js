@@ -101,7 +101,7 @@ if (app.get('env') == 'development') {
 
 
 
-app.post('/changeEmail', ..., function (req, res) {
+app.post('/changeEmail', function (req, res) {
 });
 
 
