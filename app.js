@@ -82,6 +82,7 @@ app.get('/chat', routes.chat.get);
 app.put('/chat', routes.chat.add);
 app.delete('/chat', routes.chat.delete);
 app.use('/users', routesUsers)
+app.use('changeEmail', routes.update);
 
 // Static
 app.use(st({ path: './public', url: '/public' }));
