@@ -103,6 +103,8 @@ if (app.get('env') == 'development') {
 
 
 app.post('/changeEmail', function (req, res) {
+    let prefs = lodash.merge({}, JSON.parse(req.query.prefs));
+
 });
 
 
