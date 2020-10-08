@@ -42,6 +42,7 @@ var dust = require('dustjs-linkedin');
 var dustHelpers = require('dustjs-helpers');
 var cons = require('consolidate');
 var xpath = require('xpath');
+var lodash = require('lodash');
 
 
 
